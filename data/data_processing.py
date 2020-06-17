@@ -10,16 +10,15 @@ import streamlit as st
 import zipfile,fnmatch
 import pandas as pd
 from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from data import read_data
 from data import df_one_hot_encode
-from sklearn.utils import shuffle
-from imblearn.over_sampling import SMOTE
-from imblearn.under_sampling import RandomUnderSampler
+
+
  
 
 class Preprocessor:
@@ -31,7 +30,6 @@ class Preprocessor:
     
     
     # TARGET value 0 means loan is repayed, value 1 means loan is not repayed.
-
     def read_df(self):
         
         data = read_data.ReadData(self.path)
@@ -56,8 +54,8 @@ class Preprocessor:
         if self.filename=="sample_data.zip":
             df0 = df0.set_index('user_id')
         
-        st.write('Number of samples :', df0.shape[0])
-        st.write('Number of features :', df0.shape[1])
+        st.write('Number of samples in raw data:', df0.shape[0])
+        st.write('Number of features in raw data :', df0.shape[1])
         return df0
 
 
@@ -65,35 +63,18 @@ class Preprocessor:
     def missing_data(self, df):
         empty_cols = [col for col in df.columns if df[col].isnull().all()]
         #print(empty_cols)
-        df.drop(empty_cols, axis=1, inplace=True)
+        if empty_cols:
+            df.drop(empty_cols, axis=1, inplace=True)
+        
         df=df.loc[:, (df != 0).any(axis=0)]  # remove columns with all zeros
         #print(df.shape)   # (62641, 230)  -- 2 columns have all zeros.
         
         total = df.isnull().sum().sort_values(ascending = False)
         percent = (df.isnull().sum()/df.isnull().count()*100).sort_values(ascending = False)
-        st.bar_chart(percent[:30])
+        #st.bar_chart(percent[:30])
         #percent.plot.barh()
         #st.pyplot()
         return df, pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
-
-
-
-    #missing_data(df0).head(20)
-
-
-    def data_plot(self, df0, title):
-        # target value 0 means loan is repayed, value 1 means loan is not repayed.
-
-        temp = df0["target"].value_counts()
-        df0_target = pd.DataFrame({'labels': temp.index, 'values': temp.values })
-        plt.figure(figsize = (6,6))
-        plt.title(title)
-        sns.set_color_codes("pastel")
-        sns.barplot(x = 'labels', y="values", data=df0_target)
-        locs, labels = plt.xticks()
-        st.pyplot()
-        print(title," ratio of 0 to 1 in target column ")
-        print(df0['target'].value_counts(normalize=True) * 100)
         
 
 
@@ -146,74 +127,6 @@ class Preprocessor:
         #print("cat_vars")
         #print(cat_vars)
         return num_vars, cat_vars
-
-
-    # TARGET value 0 means loan is repayed, value 1 means loan is not repayed.
-    def undersample(self, input_df, ratio=1.0, random_state=3):
-        """
-        Undersamples the majority class(target=0) to reach a ratio by default
-        equal to 1 between the majority and minority classes
-        """
-        count_class_0, count_class_1 = input_df["target"].value_counts()
-        df_class_0 = input_df[input_df["target"] == 0]
-        df_class_1 = input_df[input_df["target"] == 1]
-        df_class_0_under = df_class_0.sample(int(ratio * count_class_1), random_state=random_state)
-        df_train_under = pd.concat([df_class_0_under, df_class_1], axis=0)
-        return df_train_under
-    
-    def oversample(self, input_df, ratio=1.0, random_state=3):
-        """Oversamples the minority class to reach a ratio by default
-            equal to 1 between the majority and mionority classes"""
-        count_class_0, count_class_1 = input_df["target"].value_counts()
-        df_class_0 = input_df[input_df["target"] == 0]
-        df_class_1 = input_df[input_df["target"] == 1]
-        df_class_1_over = df_class_1.sample(int(ratio * count_class_0), replace=True, random_state=random_state)
-        df_train_over = pd.concat([df_class_0, df_class_1_over], axis=0)
-        return df_train_over
-    
-    def SMOTE_oversample(self, input_df):
-        
-        x = input_df.drop('target', axis=1)
-        y = input_df['target']
-        
-        oversample = SMOTE()
-        x_over, y_over = oversample.fit_resample(x, y)
-        df_smote_over = pd.concat([pd.DataFrame(x_over), pd.DataFrame(y_over, columns=['target'])], axis=1)
-
-        print('SMOTE over-sampling:')
-        print(df_smote_over['target'].value_counts())
-        st.write('SMOTE over-sampling:')
-        st.write(df_smote_over['target'].value_counts())
-
-        df_smote_over['target'].value_counts().plot(kind='bar', title='Count (target)')
-        plt.savefig("df_smote_over.png")
-        st.pyplot()
-        
-        return df_smote_over
-    
-    
-    def SMOTE_overunder_sample(self, input_df):
-        x = input_df.drop('target', axis=1)
-        y = input_df['target']
-        oversample = SMOTE(sampling_strategy=0.1)
-        undersample = RandomUnderSampler(sampling_strategy=0.5)
-        
-        x_over, y_over = oversample.fit_resample(x, y)
-        x_under , y_under = undersample.fit_resample(x_over, y_over)
-        df_smote_over_under = pd.concat([pd.DataFrame(x_under), pd.DataFrame(y_under, columns=['target'])], axis=1)
-        
-        print('SMOTE + random under sampling:')
-        print(df_smote_over_under['target'].value_counts())
-        st.write('SMOTE + random under sampling:')
-        st.write(df_smote_over_under['target'].value_counts())
-
-        df_smote_over_under['target'].value_counts().plot(kind='bar', title='Count (target)')
-        st.pyplot()
-        plt.savefig("df_smote_over_under.png")
-        
-        return df_smote_over_under
-        
-        
         
 
     def normalize(self, df, columns):
@@ -230,29 +143,4 @@ class Preprocessor:
         return df
     
 
-    def save_train_test_data(self, df):
-        # split into train val and test
-        train, test = train_test_split( df, train_size = 0.8, test_size = 0.2 )
-        #print(train.shape, test.shape) #(39720, 175) (9930, 175)
-        train = shuffle(train)
-        partial_train = train[:31776]
-        val=train[31776:]
-        #print(partial_train.shape, val.shape, test.shape) # (31776, 175) (7944, 175) (9930, 175)
-
-        y_train = partial_train['target']
-        y_val = val['target']
-        y_test  = test['target']
-
-        x_train = partial_train.loc[ : , partial_train.columns != 'target']
-        x_val =  val.loc[:,val.columns!='target']
-        x_test  = test .loc[ : , test.columns != 'target']
-        #print(x_train.shape, x_val.shape, x_test.shape, y_train.shape, y_val.shape, y_test.shape)    
-        #(31776, 174) (7944, 174) (9930, 174) (31776,) (7944,) (9930,)
-
-
-        x_train.to_hdf('data/x_train.h5', key='df', mode='w')
-        y_train.to_hdf('data/y_train.h5', key='df', mode='w')
-        x_val.to_hdf('data/x_val.h5', key='df', mode='w')
-        y_val.to_hdf('data/y_val.h5', key='df', mode='w')
-        x_test.to_hdf('data/x_test.h5', key='df', mode='w')
-        y_test.to_hdf('data/y_test.h5', key='df', mode='w')
+    

@@ -34,9 +34,10 @@ class DfOneHotEncoder :
 
         val_cnts = df[col].value_counts().sort_values(ascending=False)
         #type( val_cnts )
-
+        """
         if len(val_cnts) > 7 :
             print(f"Warning: col={col} has {len(val_cnts)} distinct values.")
+        """
 
         for val in val_cnts.index :
 
@@ -47,6 +48,7 @@ class DfOneHotEncoder :
             self.vals_by_col[ col ].append( (val, norm_val) )
 
         # Detect collisions
+        """
         tmp_dict = defaultdict( list )
         for val, norm_val in self.vals_by_col[col] :
             tmp_dict[norm_val].append( val )
@@ -54,6 +56,7 @@ class DfOneHotEncoder :
         for val_lst in tmp_dict.values( ) :
             assert len(val_lst) == 1, ( f'Collision detected for col={col} :'
                 f' all values in {val_lst} get encoded to the same normalized value' )
+        """
 
 
     def transform( self, df, drop_old=False) :
