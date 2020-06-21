@@ -61,7 +61,7 @@ python main.py
 ```
 streamlit run main.py
 ```
-and go to http://0.0.0.0:8501/.
+and go to http://0.0.0.0:8501 .
 4. To run the containarized web application
 - Download and install [Docker](https://docs.docker.com/get-docker/) to create a containerized application for the demo.
 - Run
@@ -84,8 +84,8 @@ docker run -p 8501:8501 smartlyfinancial-streamlit:v1
 ```
 gcloud components install kubectl
 ```
-2. [Docker](https://docs.docker.com/get-docker/)
-3. GCP account with billing enabled. GCP project ID {PROJECT_ID} and compute_zone.
+3. [Docker](https://docs.docker.com/get-docker/).
+4. GCP account with billing enabled. GCP project ID {PROJECT_ID} and compute_zone.
 
 ### Workflow
 
@@ -97,7 +97,7 @@ docker build -t gcr.io/{$PROJECT_ID}/smartlyfinancial-streamlit:v1 .
 ```
 docker run --rm -p 8501:8501 gcr.io/{$PROJECT_ID}/smartlyfinancial-streamlit:v1
 ```
-Then point your internet browser to localhost:8501 to see the app.
+Then point your internet browser to localhost:8501 to see the app.\
 3. Push image to Google Container Registry (GCR)
 ```
 gcloud auth configure-docker
