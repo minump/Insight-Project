@@ -1,7 +1,7 @@
 # Insight-Project
 
 # Smartly Financial : A scalable credit lending web application.
-Minu Mathew, Insight AI Fellowship AISV2020B Project. 
+Minu Mathew, Insight AI Fellowship (AISV 2020B) Project. 
 This is a consulting project for [RedCarpetUp](https://www.redcarpetup.com)
 
 ## Motivation :
@@ -61,7 +61,7 @@ python main.py
 ```
 streamlit run main.py
 ```
-and go to http://0.0.0.0:8501 .
+and point your browser to http://0.0.0.0:8501 .\
 4. To run the containarized web application
 - Download and install [Docker](https://docs.docker.com/get-docker/) to create a containerized application for the demo.
 - Run
