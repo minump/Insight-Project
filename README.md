@@ -25,8 +25,7 @@ Smartly Financial is an internal tool for scalable and explainable lending. It u
   - df_one_hot_encoding.py encodes categorical variables into one-hot-encoded features.
   - sampling.py samples the class imbalanced dataset according to the user defined sampling method.
   - split_data.py splits the data into train, validation and test sets.
-- src
-  - main.py is the main file to run.
+- app.py is the main file to run.
 - Dockerfile
 - requirements.txt
 
