@@ -76,6 +76,7 @@ docker images
 ```
 docker run -p 8501:8501 smartlyfinancial-streamlit:v1
 ```
+5. To see the web app deployed in GKE go [here]
 
 ## Run in GCP using Kubernetes :
 ### Prerequisites
