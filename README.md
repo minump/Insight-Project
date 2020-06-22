@@ -30,6 +30,16 @@ Smartly Financial is an internal tool for scalable and explainable lending. It u
 - Dockerfile
 - requirements.txt
 
+## Please Note:
+The model has been tuned for RedCarpet data. Hence the results on Kaggle home credit application loan dataset might not be up-to-the-mark.
+## Results :
+Data : RedCarpet
+| Metrics          | Logistic Regression | XGBoost Classifier|
+| -------------    |:-------------------:|:-----------------:|
+| Class 0 F1 score | 0.926               | 0.995             |
+| Class 1 F1 score | 0.963               |  0.989            |
+| False positives  | 108                 |     14            |
+| False negatives	 | 74                  | 11                |
 
 ## Installation :
 1. Clone the GitHub repository
