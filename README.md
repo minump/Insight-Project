@@ -60,15 +60,15 @@ conda install --file requirements.txt
 ## Usage :
 1. To request all command line parameters, please run:
 ```
-python main.py --help
+python app.py --help
 ```
 2. To run Smartly Financial python module with default parameters, please run:
 ```
-python main.py
+python app.py
 ```
 3. To run Smartly Financial streamlit app in your local, please run:
 ```
-streamlit run main.py
+streamlit run app.py
 ```
 and point your browser to http://0.0.0.0:8501 .\
 4. To run the containarized web application
