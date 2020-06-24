@@ -11,7 +11,7 @@ import zipfile
 import streamlit as st
 import pandas as pd
 
-@st.cache
+@st.cache()
 class ReadData:
     """
     unzip and read data into df. Returns the df.
@@ -27,10 +27,8 @@ class ReadData:
         zfile.close()
     
     def read_data(self):
-        st.write('Loading data from', self.filename)
         print("loading data from ", self.filename)
         csvfile = os.path.splitext(self.filename)[0] + '.csv' # application_train
         csvfilename = os.path.join(self.dir,csvfile)
         df0 = pd.read_csv(csvfilename)
-        #print(df0.columns.values)
         return df0

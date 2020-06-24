@@ -7,7 +7,7 @@ Created on Thu Jun  4 19:25:20 2020
 
 from collections import defaultdict
 import re
-#%%
+
 
 class DfOneHotEncoder :
     """An encoder for turning each of a set of categorical columns
@@ -71,12 +71,12 @@ class DfOneHotEncoder :
                 del df[col]
 
         return df
-    #%%
+    
+    
 def test( df0, self ) :
-    #%%
+    
     df = df0
     col = "name_contract_type"
     enc = DfOneHotEncoder(  [ col for col in cat_vars_0.index
                               if  col != 'organization_type' ] )
     enc.fit( df )
-    #%%

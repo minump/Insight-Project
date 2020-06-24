@@ -2,21 +2,20 @@
 # coding: utf-8
 """
 Data : Home credit application loan dataset : application_train.csv
-Preprocess the data and save h5 files
+Preprocess the data
 """
 
 import os
 import streamlit as st
-import zipfile,fnmatch
 import pandas as pd
 from sklearn import preprocessing
 
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import seaborn as sns
-from data import read_data
-from data import df_one_hot_encode
+
+from utils import read_data
+from utils import df_one_hot_encode
 
 
  
@@ -31,6 +30,7 @@ class Preprocessor:
     
     # TARGET value 0 means loan is repayed, value 1 means loan is not repayed.
     def read_df(self):
+        
         
         data = read_data.ReadData(self.path)
         data.unzip_data()
@@ -54,9 +54,8 @@ class Preprocessor:
         if self.filename=="sample_data.zip":
             df0 = df0.set_index('user_id')
         
-        st.write('Number of samples in raw data:', df0.shape[0])
-        st.write('Number of features in raw data :', df0.shape[1])
-        return df0
+        
+        return df0, os.path.splitext(self.filename)[0]
 
 
     # find percentage of missing data
@@ -122,10 +121,7 @@ class Preprocessor:
         num_vars = list(df.select_dtypes(include=[np.number]).columns.values)
 
         num_vars.remove('target')
-        #print(num_vars)
         cat_vars = df.dtypes[ df.dtypes == 'object' ]
-        #print("cat_vars")
-        #print(cat_vars)
         return num_vars, cat_vars
         
 

@@ -7,12 +7,12 @@ Created on Wed Jun 17 15:20:30 2020
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
 
-class SaveData:
+class SplitData:
     
     def __init__(self, data):
         self.df=data
         
-    def save_train_test_data(self):
+    def split_train_test_data(self):
         # split into train val and test
         train, test = train_test_split( self.df, test_size = 0.2, random_state=42 )
         #print(train.shape, test.shape) #(39720, 175) (9930, 175)
@@ -32,11 +32,13 @@ class SaveData:
         print("x_train, x_val, x_test, y_train, y_val, y_test shape")
         print(x_train.shape, x_val.shape, x_test.shape, y_train.shape, y_val.shape, y_test.shape)    
         #(31776, 174) (7944, 174) (9930, 174) (31776,) (7944,) (9930,)
-
-
+        return x_train, y_train, x_val, y_val, x_test, y_test 
+    
+        """
         x_train.to_hdf('data/x_train.h5', key='df', mode='w')
         y_train.to_hdf('data/y_train.h5', key='df', mode='w')
         x_val.to_hdf('data/x_val.h5', key='df', mode='w')
         y_val.to_hdf('data/y_val.h5', key='df', mode='w')
         x_test.to_hdf('data/x_test.h5', key='df', mode='w')
         y_test.to_hdf('data/y_test.h5', key='df', mode='w')
+        """
