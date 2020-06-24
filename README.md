@@ -10,6 +10,9 @@ We need an alternative form of risk assesment for lenders. This needs to be expl
 
 Smartly Financial is an internal tool for scalable and explainable lending. It uses a more holistic view of user mobile data points to create a financial identity. It uses XGBoost model due to its superior performance in handling large and extremely imabalanced dataset and SHAP values for explainability. Smartly Financial is built as a docker container and is hosted on the cloud via GCP. The product is scalable as it is deployed using Google kubernetes engine and has a load balancer that can handle multiple server requests. A Streamlit frontend serves as a dashboard to display model performances.
 
+## Demo:
+Smartly Financial web app is available [here](http://34.105.46.31/)
+
 ## Files :
 - data
   - The project utilized the data from RedCarpet. This data cannot be disclosed as its proprietary data. The model can be tested out for Kaggle [Home credit application loan dataset](https://www.kaggle.com/c/home-credit-default-risk/data?select=application_train.csv), which has similar feature structure to the RedCarpet data.
@@ -85,7 +88,7 @@ docker images
 ```
 docker run -p 8501:8501 smartlyfinancial-streamlit:v1
 ```
-5. To see the web app deployed in GKE go [here]
+5. To see the web app deployed in GKE go [here](http://34.105.46.31/)
 
 ## Run in GCP using Kubernetes :
 ### Prerequisites
