@@ -11,8 +11,8 @@ We need an alternative form of risk assesment for lenders. This needs to be expl
 Smartly Financial is an internal tool for scalable and explainable lending. It uses a more holistic view of user mobile data points to create a financial identity. It uses XGBoost model due to its superior performance in handling large and extremely imabalanced dataset and SHAP values for explainability. Smartly Financial is built as a docker container and is hosted on the cloud via GCP. The product is scalable as it is deployed using Google kubernetes engine and has a load balancer that can handle multiple server requests. A Streamlit frontend serves as a dashboard to display model performances.
 
 ## Demo:
-Smartly Financial web app is available [here](http://34.105.46.31/)
-Presentation slides are available [here](https://docs.google.com/presentation/d/1Nr9nRDg-IQUO-4ehwH3oP430ftY2rCf1ZdMvc7Hcq0w/edit#slide=id.p1)
+Smartly Financial web app is available [here](http://34.105.46.31/).
+Presentation slides are available [here](https://docs.google.com/presentation/d/1Nr9nRDg-IQUO-4ehwH3oP430ftY2rCf1ZdMvc7Hcq0w/edit#slide=id.p1).
 
 ## Files :
 - data
