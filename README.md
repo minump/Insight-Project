@@ -6,7 +6,7 @@ This is a consulting project for [RedCarpetUp](https://www.redcarpetup.com)
 
 ## Motivation :
 Banks use credit score to determine if you're trustworthy or not. However, more than 2.5 billion people around the world does not have one to begin with. Just because of some financial paper work, the world we missing out on new entrepreneurs, ideators and innovators. This is especially significant in the present situation of COVID Relief funds. The red tape involved with banks caused weeks of delay for COVID Relief funds to be dispersed. 
-We need an alternative form of risk assesment for lenders. This needs to be explainable, given GDPR and other complicancy issues in the financial sector, and there should not be any black boxes, if a decision has been made, we need to know why that decision has been made.
+We need an alternative form of risk assesment for lenders. This needs to be explainable, given GDPR and other complicancy issues in the financial sector, and there should not be any black boxes, if a decision has been made, we need to know why that decision has been made.\
 
 Smartly Financial is an internal tool for scalable and explainable lending. It uses a more holistic view of user mobile data points to create a financial identity. It uses XGBoost model due to its superior performance in handling large and extremely imabalanced dataset and SHAP values for explainability. Smartly Financial is built as a docker container and is hosted on the cloud via GCP. The product is scalable as it is deployed using Google kubernetes engine and has a load balancer that can handle multiple server requests. A Streamlit frontend serves as a dashboard to display model performances.
 
@@ -35,9 +35,9 @@ Smartly Financial web app is available [here](http://34.105.46.31/)
 ## Please Note:
 The model has been tuned for RedCarpet data. Hence the results on Kaggle home credit application loan dataset might not be up-to-the-mark.
 ## Results :
-Data : RedCarpet
-Classes:
-Class 0 - Paid Class (majority class)
+Data : RedCarpet\
+Classes:\
+Class 0 - Paid Class (majority class)\
 Class 1 - Defaulted Class (minority class)
 
 | Metrics          | Logistic Regression | XGBoost Classifier|
