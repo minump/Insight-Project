@@ -36,10 +36,14 @@ Smartly Financial web app is available [here](http://34.105.46.31/)
 The model has been tuned for RedCarpet data. Hence the results on Kaggle home credit application loan dataset might not be up-to-the-mark.
 ## Results :
 Data : RedCarpet
+Classes:
+Class 0 - Paid Class (majority class)
+Class 1 - Defaulted Class (minority class)
+
 | Metrics          | Logistic Regression | XGBoost Classifier|
 | -------------    |:-------------------:|:-----------------:|
-| Class 0 F1 score | 0.926               | 0.995             |
-| Class 1 F1 score | 0.963               |  0.989            |
+| Class 0 F1 score | 0.926               |   0.995           |
+| Class 1 F1 score | 0.963               |   0.989           |
 | False positives  | 108                 |     14            |
 | False negatives	 | 74                  | 11                |
 
