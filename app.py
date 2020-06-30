@@ -124,7 +124,7 @@ def main():
     
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("--data", action="store", default=os.path.join(os.getcwd(),"data","sample_data.zip"), help="dataset path")
+    parser.add_argument("--data", action="store", default=os.path.join(os.getcwd(),"data","application_train.zip"), help="dataset path")
     parser.add_argument("--fillna", action="store", default="median", help="Select fill NaNs with: (1)'median' (2)'mean' ")
     parser.add_argument("--sample", action="store", default='SMOTE', 
                         help="Select sampling method from : (1)'undersample' (2)'oversample' (3)'SMOTE' (4) 'SMOTE_undersample' (5) 'None' ")
