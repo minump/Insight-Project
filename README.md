@@ -142,11 +142,3 @@ kubectl get service
 ```
 Point your browser to the External URL to access the app.
 
-
-
-
-
-
-
-
-
