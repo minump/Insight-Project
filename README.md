@@ -16,7 +16,7 @@ Presentation slides are available [here](https://docs.google.com/presentation/d/
 
 ## Files :
 - data
-  - The project utilized the data from RedCarpet. This data cannot be disclosed as its proprietary data. The model can be tested out for Kaggle [Home credit application loan dataset](https://www.kaggle.com/c/home-credit-default-risk/data?select=application_train.csv), which has similar feature structure to the RedCarpet data.
+  - The project utilized the data from RedCarpet. This data cannot be disclosed as its proprietary data. The model can be tested out for Kaggle [Home credit application loan dataset](https://www.kaggle.com/c/home-credit-default-risk/data?select=application_train.csv), which has a similar feature structure to the RedCarpet data.
 - model
   - LogisticRegression.py trains and predicts using Logistic Regression model
   - XGBoost.py train and predicts using XGBoost Classifier. This is used as the default model because of this higher performance scores.
