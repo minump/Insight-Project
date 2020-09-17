@@ -19,16 +19,16 @@ Presentation slides are available [here](https://docs.google.com/presentation/d/
   - The project utilized the data from RedCarpet. This data cannot be disclosed as its proprietary data. The model can be tested out for Kaggle [Home credit application loan dataset](https://www.kaggle.com/c/home-credit-default-risk/data?select=application_train.csv), which has a similar feature structure to the RedCarpet data.
 - model
   - LogisticRegression.py trains and predicts using Logistic Regression model
-  - XGBoost.py train and predicts using XGBoost Classifier. This is used as the default model because of this higher performance scores.
-  - trained models are saved in H5 format in "saved models" folder.
+  - XGBoost.py train and predicts using XGBoost Classifier. This is used as the default model because of its higher performance scores.
+  - trained models are saved in H5 format in the "saved models" folder.
 - explain
-  - Shap.py uses SHAP values to explain the feature importance and feature dependancies. SHAP plots are saved in this folder
+  - Shap.py uses SHAP values to explain the feature importance and feature dependencies. SHAP plots are saved in this folder
 - utlis
   - read_data.py unzips the data file and reads into csv file.
   - data_processing.py takes care of the data preprocessing steps
   - df_one_hot_encoding.py encodes categorical variables into one-hot-encoded features.
-  - sampling.py samples the class imbalanced dataset according to the user defined sampling method.
-  - split_data.py splits the data into train, validation and test sets.
+  - sampling.py samples the class imbalanced dataset according to the user-defined sampling method.
+  - split_data.py splits the data into train, validation, and test sets.
 - app.py is the main file to run.
 - Dockerfile
 - requirements.txt
